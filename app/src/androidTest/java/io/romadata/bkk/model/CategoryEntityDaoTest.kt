@@ -1,11 +1,11 @@
 package io.romadata.bkk.model
 
-import android.arch.persistence.room.Room
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
+import androidx.room.Room
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import android.util.Log
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 import org.junit.After
 import org.junit.Before
@@ -102,8 +102,8 @@ class CategoryEntityDaoTest {
 
         val list = database.categoryDao().getFullCategories()
         assertNotNull(list)
-        list.getValueBlocking()?.let{it.get(0).let {
-            assertEquals(CATEGORY.name, it.category?.name)
+        list.getValueBlocking().let{it.get(0).let {
+            assertEquals(CATEGORY.name, it.category.name)
             assertEquals(subCate.name, it.subCategoryList.get(0).name)
         }}
 

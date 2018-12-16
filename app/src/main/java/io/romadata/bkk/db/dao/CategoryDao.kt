@@ -1,7 +1,13 @@
 package io.romadata.bkk.db.dao
 
-import android.arch.lifecycle.LiveData
-import io.romadata.bkk.db.entity.CategoryAndCategoryItems
+import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.OnConflictStrategy
+import androidx.room.Update
 import io.romadata.bkk.db.entity.CategoryEntity
 import io.romadata.bkk.db.entity.CategoryItemEntity
 
@@ -18,18 +24,15 @@ interface CategoryDao {
         const val TBL_CATEGORY_ITEM = "category_items"
     }
 
-    @get:Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
-    val all: List<CategoryEntity>
-
-    @get:Query("SELECT * FROM $TBL_CATEGORY_ITEM ORDER BY $COL_SEQ ASC")
-    val categoryItemEntities: List<CategoryItemEntity>
 
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
     fun getAllCategories(): LiveData<List<CategoryEntity>>
 
-    @Transaction
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
-    fun getFullCategories(): LiveData<List<CategoryAndCategoryItems>>
+    fun allCategories(): LiveData<List<CategoryEntity>>
+
+    @Query("SELECT * FROM $TBL_CATEGORY_ITEM ORDER BY $COL_SEQ ASC")
+    fun allCategoryItems(): LiveData<List<CategoryItemEntity>>
 
     @Query("SELECT * FROM $TBL_CATEGORY_ITEM WHERE $COL_CATE_UID=:uid ORDER BY $COL_SEQ ASC")
     fun getSubCategories(uid: String): LiveData<List<CategoryItemEntity>>

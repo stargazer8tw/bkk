@@ -2,14 +2,14 @@
 @file:JvmName("Utils")
 package io.romadata.bkk.ext
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 
 /**
  * see https://qiita.com/yuichi_araki/items/f9b0778f927bccdf08ca
  */
 fun <T> LiveData<T>.nonNullObserve(owner: LifecycleOwner, observer: (t: T) -> Unit) {
-    this.observe(owner, android.arch.lifecycle.Observer {
+    this.observe(owner, androidx.lifecycle.Observer {
         it?.let(observer)
     })
 }

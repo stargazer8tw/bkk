@@ -1,6 +1,6 @@
 package io.romadata.bkk.db.converter
 
-import android.arch.persistence.room.TypeConverter
+import androidx.room.TypeConverter
 import java.util.Date
 import java.math.BigDecimal
 

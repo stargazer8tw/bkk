@@ -1,6 +1,11 @@
 package io.romadata.bkk.db.entity
 
 import java.util.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.ForeignKey
 
 /**
  * see https://android.jlelse.eu/setting-android-room-in-real-project-58a77469737c?gi=e64097fffe8f

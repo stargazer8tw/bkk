@@ -1,6 +1,6 @@
 package io.romadata.bkk.fragment
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
 class ListViewModel : ViewModel() {
     // TODO: Implement the ViewModel
