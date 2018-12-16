@@ -1,4 +1,4 @@
-package io.romadata.bkk.model
+package io.romadata.bkk.db.entity
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
@@ -8,16 +8,16 @@ import java.util.Date
 import java.math.BigDecimal
 
 @Entity
-data class Item(
+data class ItemEntity(
     @PrimaryKey
     @ColumnInfo(name = "uid")
     val uid: String,
 
-    @ColumnInfo(name = "categoryEntity")
+    @ColumnInfo(name = "category_name")
     var name: String = "",
 
-    @ColumnInfo(name = "subcategory")
-    var seq: String,
+    @ColumnInfo(name = "category_item_name")
+    var category_item_name: String,
 
     @ColumnInfo(name = "time")
     var time: Date,

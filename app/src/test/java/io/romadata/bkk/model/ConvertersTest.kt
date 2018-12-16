@@ -1,6 +1,6 @@
 package io.romadata.bkk.model
 
-import io.romadata.bkk.db.entity.Converters
+import io.romadata.bkk.db.converter.Converters
 import org.junit.Assert
 import org.junit.Test
 import java.math.BigDecimal

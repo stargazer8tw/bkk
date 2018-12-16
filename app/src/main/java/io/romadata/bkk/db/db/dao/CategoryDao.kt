@@ -1,6 +1,7 @@
-package io.romadata.bkk.model
+package io.romadata.bkk.db.db.dao
 
 import android.arch.lifecycle.LiveData
+import io.romadata.bkk.db.entity.CategoryAndCategoryItems
 import io.romadata.bkk.db.entity.CategoryEntity
 import io.romadata.bkk.db.entity.CategoryItemEntity
 
@@ -28,7 +29,7 @@ interface CategoryDao {
 
     @Transaction
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
-    fun getFullCategories(): LiveData<List<CategoryAndSubCategories>>
+    fun getFullCategories(): LiveData<List<CategoryAndCategoryItems>>
 
     @Query("SELECT * FROM $TBL_SUBCATEGORY WHERE $COL_CATE_UID=:uid ORDER BY $COL_SEQ ASC")
     fun getSubCategories(uid: String): LiveData<List<CategoryItemEntity>>

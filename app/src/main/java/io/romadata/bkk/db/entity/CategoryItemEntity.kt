@@ -5,7 +5,7 @@ package io.romadata.bkk.db.entity
  * see https://developer.android.com/training/data-storage/room/defining-data
  */
 @Entity(
-    tableName = "subcategory",
+    tableName = "category_item",
     indices = arrayOf(
         Index(value = arrayOf("category_uid")),
         Index(value = arrayOf("uid", "category_uid"), unique = true)
@@ -31,5 +31,5 @@ data class CategoryItemEntity(
     var name: String = "",
 
     @ColumnInfo(name = "ordinal")
-    var seq: Long
+    var ordinal: Long
 )

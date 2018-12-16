@@ -1,4 +1,4 @@
-package io.romadata.bkk.db.entity
+package io.romadata.bkk.db.converter
 
 import android.arch.persistence.room.TypeConverter
 import java.util.Date
