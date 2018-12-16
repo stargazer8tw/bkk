@@ -1,11 +1,13 @@
 package io.romadata.bkk.db.entity
 
+import java.util.*
+
 /**
  * see https://android.jlelse.eu/setting-android-room-in-real-project-58a77469737c?gi=e64097fffe8f
  * see https://developer.android.com/training/data-storage/room/defining-data
  */
 @Entity(
-    tableName = "category_item",
+    tableName = "category_items",
     indices = arrayOf(
         Index(value = arrayOf("category_uid")),
         Index(value = arrayOf("uid", "category_uid"), unique = true)
@@ -22,7 +24,7 @@ package io.romadata.bkk.db.entity
 data class CategoryItemEntity(
     @PrimaryKey
     @ColumnInfo(name = "uid")
-    val uid: String,
+    val uid: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "category_uid")
     val categoryUid: String,

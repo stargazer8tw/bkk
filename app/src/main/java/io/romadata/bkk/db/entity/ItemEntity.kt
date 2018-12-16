@@ -5,13 +5,14 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 import java.util.Date
+import java.util.UUID
 import java.math.BigDecimal
 
-@Entity
+@Entity(tableName = "items")
 data class ItemEntity(
     @PrimaryKey
     @ColumnInfo(name = "uid")
-    val uid: String,
+    val uid: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "category_name")
     var name: String = "",

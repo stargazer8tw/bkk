@@ -14,14 +14,14 @@ interface CategoryDao {
         const val COL_NAME = "name"
         const val COL_SEQ = "ordinal"
 
-        const val TBL_CATEGORY = "categoryEntity"
-        const val TBL_SUBCATEGORY = "subcategory"
+        const val TBL_CATEGORY = "categories"
+        const val TBL_CATEGORY_ITEM = "category_items"
     }
 
     @get:Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
     val all: List<CategoryEntity>
 
-    @get:Query("SELECT * FROM $TBL_SUBCATEGORY ORDER BY $COL_SEQ ASC")
+    @get:Query("SELECT * FROM $TBL_CATEGORY_ITEM ORDER BY $COL_SEQ ASC")
     val categoryItemEntities: List<CategoryItemEntity>
 
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
@@ -31,7 +31,7 @@ interface CategoryDao {
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
     fun getFullCategories(): LiveData<List<CategoryAndCategoryItems>>
 
-    @Query("SELECT * FROM $TBL_SUBCATEGORY WHERE $COL_CATE_UID=:uid ORDER BY $COL_SEQ ASC")
+    @Query("SELECT * FROM $TBL_CATEGORY_ITEM WHERE $COL_CATE_UID=:uid ORDER BY $COL_SEQ ASC")
     fun getSubCategories(uid: String): LiveData<List<CategoryItemEntity>>
 
     @Query("SELECT * FROM $TBL_CATEGORY WHERE $COL_NAME=:name")
