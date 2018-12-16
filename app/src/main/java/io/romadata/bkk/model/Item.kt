@@ -13,7 +13,7 @@ data class Item(
     @ColumnInfo(name = "uid")
     val uid: String,
 
-    @ColumnInfo(name = "category")
+    @ColumnInfo(name = "categoryEntity")
     var name: String = "",
 
     @ColumnInfo(name = "subcategory")

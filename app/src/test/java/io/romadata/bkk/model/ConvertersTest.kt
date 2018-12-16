@@ -1,8 +1,8 @@
 package io.romadata.bkk.model
 
+import io.romadata.bkk.db.entity.Converters
 import org.junit.Assert
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.math.BigDecimal
 
 class ConvertersTest {

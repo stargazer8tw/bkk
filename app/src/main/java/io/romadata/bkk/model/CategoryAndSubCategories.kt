@@ -2,16 +2,18 @@ package io.romadata.bkk.model
 
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Relation
+import io.romadata.bkk.db.entity.CategoryEntity
+import io.romadata.bkk.db.entity.CategoryItemEntity
 
 class CategoryAndSubCategories() {
 
     @Embedded
-    var category: Category? = null
+    var categoryEntity: CategoryEntity? = null
 
     @Relation(
         parentColumn = "uid",
         entityColumn = "category_uid",
-        entity = SubCategory::class
+        entity = CategoryItemEntity::class
     )
-    var subCategoryList: List<SubCategory> = ArrayList()
+    var categoryItemEntityList: List<CategoryItemEntity> = ArrayList()
 }

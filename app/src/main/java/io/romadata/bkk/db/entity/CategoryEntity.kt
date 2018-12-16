@@ -1,11 +1,11 @@
-package io.romadata.bkk.model
+package io.romadata.bkk.db.entity
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity
-data class Category(
+data class CategoryEntity(
     @PrimaryKey
     @ColumnInfo(name = "uid")
     val uid: String,
@@ -13,6 +13,6 @@ data class Category(
     @ColumnInfo(name = "name")
     var name: String = "",
 
-    @ColumnInfo(name = "seq")
-    var seq: Long
+    @ColumnInfo(name = "ordinal")
+    var ordinal: Long
 )

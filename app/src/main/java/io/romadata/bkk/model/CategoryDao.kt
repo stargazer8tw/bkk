@@ -1,7 +1,8 @@
 package io.romadata.bkk.model
 
 import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+import io.romadata.bkk.db.entity.CategoryEntity
+import io.romadata.bkk.db.entity.CategoryItemEntity
 
 @Dao
 interface CategoryDao {
@@ -10,50 +11,50 @@ interface CategoryDao {
         const val COL_UID = "uid"
         const val COL_CATE_UID = "category_uid"
         const val COL_NAME = "name"
-        const val COL_SEQ = "seq"
+        const val COL_SEQ = "ordinal"
 
-        const val TBL_CATEGORY = "category"
+        const val TBL_CATEGORY = "categoryEntity"
         const val TBL_SUBCATEGORY = "subcategory"
     }
 
     @get:Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
-    val all: List<Category>
+    val all: List<CategoryEntity>
 
     @get:Query("SELECT * FROM $TBL_SUBCATEGORY ORDER BY $COL_SEQ ASC")
-    val subCategories: List<SubCategory>
+    val categoryItemEntities: List<CategoryItemEntity>
 
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
-    fun getAllCategories(): LiveData<List<Category>>
+    fun getAllCategories(): LiveData<List<CategoryEntity>>
 
     @Transaction
     @Query("SELECT * FROM $TBL_CATEGORY ORDER BY $COL_SEQ ASC")
     fun getFullCategories(): LiveData<List<CategoryAndSubCategories>>
 
     @Query("SELECT * FROM $TBL_SUBCATEGORY WHERE $COL_CATE_UID=:uid ORDER BY $COL_SEQ ASC")
-    fun getSubCategories(uid: String): LiveData<List<SubCategory>>
+    fun getSubCategories(uid: String): LiveData<List<CategoryItemEntity>>
 
     @Query("SELECT * FROM $TBL_CATEGORY WHERE $COL_NAME=:name")
-    fun getCategory(name: String): Category
+    fun getCategory(name: String): CategoryEntity
 
     /**
      * OnConflictStrategy.REPLACE will cause relation data deleted
      * @see https://codelabs.developers.google.com/codelabs/android-room-with-a-view/index.html?index=..%2F..%2Findex#4
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(category: Category)
+    fun insert(categoryEntity: CategoryEntity)
 
     @Delete
-    fun delete(category: Category)
+    fun delete(categoryEntity: CategoryEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(subcategory: SubCategory)
+    fun insert(subcategory: CategoryItemEntity)
 
     @Delete
-    fun delete(subcategory: SubCategory)
+    fun delete(subcategory: CategoryItemEntity)
 
     @Update
-    fun update(category: Category)
+    fun update(categoryEntity: CategoryEntity)
 
     @Update
-    fun update(subcategory: SubCategory)
+    fun update(subcategory: CategoryItemEntity)
 }

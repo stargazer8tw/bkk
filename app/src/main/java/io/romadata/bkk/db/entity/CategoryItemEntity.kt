@@ -1,6 +1,4 @@
-package io.romadata.bkk.model
-
-import android.arch.persistence.room.*
+package io.romadata.bkk.db.entity
 
 /**
  * see https://android.jlelse.eu/setting-android-room-in-real-project-58a77469737c?gi=e64097fffe8f
@@ -14,14 +12,14 @@ import android.arch.persistence.room.*
     ),
     foreignKeys = arrayOf(
         ForeignKey(
-            entity = Category::class,
+            entity = CategoryEntity::class,
             parentColumns = arrayOf("uid"),
             childColumns = arrayOf("category_uid"),
             onDelete = ForeignKey.CASCADE
         )
     )
 )
-data class SubCategory(
+data class CategoryItemEntity(
     @PrimaryKey
     @ColumnInfo(name = "uid")
     val uid: String,
@@ -32,6 +30,6 @@ data class SubCategory(
     @ColumnInfo(name = "name")
     var name: String = "",
 
-    @ColumnInfo(name = "seq")
+    @ColumnInfo(name = "ordinal")
     var seq: Long
 )

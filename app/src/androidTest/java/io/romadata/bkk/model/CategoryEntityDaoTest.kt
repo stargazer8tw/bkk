@@ -4,11 +4,8 @@ import android.arch.persistence.room.Room
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 import android.util.Log
-import android.widget.Toast
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 import org.junit.After
 import org.junit.Before
@@ -17,13 +14,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import io.romadata.bkk.AppDatabase
-import io.romadata.bkk.ext.nonNullObserve
+import io.romadata.bkk.db.entity.CategoryEntity
+import io.romadata.bkk.db.entity.CategoryItemEntity
 
 /**
  * Test the implementation of [CategoryDao]
  */
 @RunWith(AndroidJUnit4::class)
-class CategoryDaoTest {
+class CategoryEntityDaoTest {
 
     private lateinit var database: AppDatabase
 
@@ -85,10 +83,10 @@ class CategoryDaoTest {
         database.categoryDao().insert(CATEGORY)
 
         val dCate = database.categoryDao().getCategory("food")
-        val subCate = SubCategory("0001", dCate.uid, "meat", 0)
+        val subCate = CategoryItemEntity("0001", dCate.uid, "meat", 0)
         database.categoryDao().insert(subCate)
 
-        val list = database.categoryDao().subCategories
+        val list = database.categoryDao().categoryItemEntities
         assertNotNull(list)
         assertEquals(subCate.name, list.get(0).name)
     }
@@ -99,7 +97,7 @@ class CategoryDaoTest {
         database.categoryDao().insert(CATEGORY)
 
         val dCate = database.categoryDao().getCategory("food")
-        val subCate = SubCategory("0001", dCate.uid, "meat", 0)
+        val subCate = CategoryItemEntity("0001", dCate.uid, "meat", 0)
         database.categoryDao().insert(subCate)
 
         val list = database.categoryDao().getFullCategories()
@@ -112,7 +110,7 @@ class CategoryDaoTest {
     }
 
     companion object {
-        private val CATEGORY = Category("0000", "food", 0)
+        private val CATEGORY = CategoryEntity("0000", "food", 0)
     }
 
     @Throws(InterruptedException::class)

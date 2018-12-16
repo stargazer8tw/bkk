@@ -7,15 +7,15 @@ import android.arch.persistence.room.TypeConverters
 import android.content.Context
 
 import io.romadata.bkk.model.CategoryDao
-import io.romadata.bkk.model.Category
-import io.romadata.bkk.model.SubCategory
-import io.romadata.bkk.model.Converters
+import io.romadata.bkk.db.entity.CategoryEntity
+import io.romadata.bkk.db.entity.CategoryItemEntity
+import io.romadata.bkk.db.entity.Converters
 
 /**
  * @see https://github.com/irontec/android-room-example
  * @see https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1
  */
-@Database(entities = arrayOf(Category::class, SubCategory::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(CategoryEntity::class, CategoryItemEntity::class), version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
