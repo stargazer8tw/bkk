@@ -6,7 +6,7 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import android.content.Context
 
-import io.romadata.bkk.db.db.dao.CategoryDao
+import io.romadata.bkk.db.dao.CategoryDao
 import io.romadata.bkk.db.entity.CategoryEntity
 import io.romadata.bkk.db.entity.CategoryItemEntity
 import io.romadata.bkk.db.converter.Converters

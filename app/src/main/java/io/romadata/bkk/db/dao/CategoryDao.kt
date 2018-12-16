@@ -1,4 +1,4 @@
-package io.romadata.bkk.db.db.dao
+package io.romadata.bkk.db.dao
 
 import android.arch.lifecycle.LiveData
 import io.romadata.bkk.db.entity.CategoryAndCategoryItems
